@@ -14,7 +14,7 @@ export default function Home() {
         <h3 className="text-teal-800">Software developer</h3>
         <div className="w-full py-8">
           <h1 className="text-teal-900 text-4xl">About</h1>
-          <p>I'm a software developer based in Italy</p>
+          <p>I`&apos;`m a software developer based in Italy</p>
         </div>
 
       </div>
