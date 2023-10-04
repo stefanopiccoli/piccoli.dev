@@ -7,7 +7,14 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'Nokia': ['Nokia Cellphone FC', 'cursive']
+      },
+      colors:{
+        'Nokia': '#303031'
+      }
+    },
   },
   plugins: [],
 };

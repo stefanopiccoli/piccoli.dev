@@ -1,8 +1,9 @@
-import Image from "next/image";
+import Mockup from "@/components/nokia/Mockup";
+
 export default function Home() {
-  return (
-    <div className="relative">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-start bg-emerald-300 py-24 px-4">
+  return <Mockup />;
+  {
+    /* <div className="sticky top-0 h-screen flex flex-col items-center justify-start bg-emerald-100 py-24 px-4">
         <Image
           className="rounded-full border-4 border-teal-900 h-32 w-32 object-top object-cover"
           src="/images/PF.jpg"
@@ -13,10 +14,9 @@ export default function Home() {
         <h2 className="text-3xl text-teal-900">Stefano Piccoli</h2>
         <h3 className="text-teal-800">Software developer</h3>
         <div className="w-full py-8">
-          <h1 className="text-teal-900 text-4xl">About</h1>
-          <p>I`&apos;`m a software developer based in Italy</p>
+          <h1 className="text-teal-900 text-3xl">About</h1>
+          <p className="text-gray-700 text-sm">A Gen-Z software developer with a strong sense of humor </p>
         </div>
-
       </div>
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-teal-700 text-white">
         <h2 className="text-4xl">The Second Title</h2>
@@ -28,7 +28,6 @@ export default function Home() {
       </div>
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-neutral-800 text-white">
         <h2 className="text-4xl">The Fourth Title</h2>
-      </div>
-    </div>
-  );
+      </div> */
+  }
 }
