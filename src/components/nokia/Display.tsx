@@ -1,6 +1,13 @@
 "use client";
 import Image from "next/image";
-import { Dispatch, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  createRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import MenuItem from "./MenuItem";
 
 export default function ({
@@ -15,6 +22,20 @@ export default function ({
   menuItem: number;
 }) {
   const timestamp = new Date();
+  const refs = useRef<any>([]);
+  const gallery = ['S1.jpg','S2.jpg','SeJ.jpg','SeL.jpg']
+
+  refs.current = gallery.map(
+    (_, i) => refs.current[i] ?? createRef()
+  );
+
+  useEffect(() => {
+    if (display === "gallery") {
+      refs.current[menuItem].current?.scrollIntoView({block:"nearest", inline:"start"})
+      console.log(refs.current[menuItem].current);
+      
+    }
+  }, [menuItem]);
 
   const view = () => {
     switch (display) {
@@ -63,15 +84,27 @@ export default function ({
         return (
           <>
             <div className="border-2 border-Nokia">Stefano Piccoli</div>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse qui eaque rerum quis unde numquam voluptas distinctio molestiae vitae saepe?</p>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse qui
+              eaque rerum quis unde numquam voluptas distinctio molestiae vitae
+              saepe?
+            </p>
           </>
         );
-        case "gallery":
+      case "gallery":
         return (
           <>
-            <div className="grid grid-cols-3">
-              {menuItems.map((item,i)=>(
-                <Image key={i} src={item.src} alt="" width={300} height={300}/>
+            <div className="grid grid-cols-2 h-full gap-2">
+              {gallery.map((item, i) => (
+                <Image
+                  key={i}
+                  src={"/images/gallery/"+item}
+                  alt=""
+                  width={300}
+                  height={300}
+                  className={"w-full h-full object-cover "+(menuItem === i ? "border-2 border-Nokia" : "")}
+                  ref={refs.current[i]}
+                />
               ))}
             </div>
           </>

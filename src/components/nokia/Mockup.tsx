@@ -28,49 +28,7 @@ export default function Mockup() {
     {
       src: "/images/GalleryPixeled.png",
       title: "Gallery",
-      action: () =>setDisplay("gallery"),
-    },
-    {
-      src: "/images/ContactsPixeled.png",
-      title: "Contacts",
-      action: () => setDisplay("contacts"),
-    },
-    {
-      src: "/images/GithubPixeled.png",
-      title: "Github",
-      action: () => window.open("https://github.com/stefanopiccoli", "_blank"),
-    },
-    {
-      src: "/images/InstagramPixeled.png",
-      title: "Instagram",
-      action: () =>
-        window.open("https://www.instagram.com/im_stefano/", "_blank"),
-    },
-    {
-      src: "/images/GalleryPixeled.png",
-      title: "Gallery",
-      action: () =>setDisplay("gallery"),
-    },
-    {
-      src: "/images/ContactsPixeled.png",
-      title: "Contacts",
-      action: () => setDisplay("contacts"),
-    },
-    {
-      src: "/images/GithubPixeled.png",
-      title: "Github",
-      action: () => window.open("https://github.com/stefanopiccoli", "_blank"),
-    },
-    {
-      src: "/images/InstagramPixeled.png",
-      title: "Instagram",
-      action: () =>
-        window.open("https://www.instagram.com/im_stefano/", "_blank"),
-    },
-    {
-      src: "/images/GalleryPixeled.png",
-      title: "Gallery",
-      action: () =>setDisplay("gallery"),
+      action: () => setDisplay("gallery"),
     },
   ];
 
@@ -117,14 +75,6 @@ export default function Mockup() {
         width={1000}
         height={1000}
       />
-      <div className="absolute font-Nokia px-2 py-4 top-[12rem] left-10 w-56 h-[10.2rem] rounded-2xl text-Nokia font-light overflow-scroll scroll">
-        <Display
-          display={display}
-          setDisplay={setDisplay}
-          menuItems={menuItems}
-          menuItem={menuItem}
-        />
-      </div>
       <Image
         src="/images/nokia3310mockup.png"
         className="absolute"
@@ -132,6 +82,14 @@ export default function Mockup() {
         width={1000}
         height={1000}
       />
+      <div className="absolute font-Nokia px-2 py-4 top-[12rem] left-10 w-56 h-[10.2rem] rounded-2xl text-Nokia font-light overflow-scroll">
+        <Display
+          display={display}
+          setDisplay={setDisplay}
+          menuItems={menuItems}
+          menuItem={menuItem}
+        />
+      </div>
       <div
         className="absolute w-[8.1rem] h-9 bg-green-600 top-[24.2rem] left-[5.4rem] rounded-b-full opacity-0"
         onClick={handleMiddleButton}
