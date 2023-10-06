@@ -2,12 +2,13 @@
 import Image from "next/image";
 import Display from "./Display";
 import { useState } from "react";
+import { IDisplay } from "@/models/Display";
 
 export default function Mockup() {
-  const [display, setDisplay] = useState("home");
+  const [display, setDisplay] = useState<IDisplay>("home");
 
   //MENU
-  const [menuItem, setMenuItem] = useState(0); //ACTUALLY VISIBLE MENU ITEM
+  const [menuSelection, setMenuSelection] = useState(0); //ACTUALLY VISIBLE MENU ITEM
   const menuItems = [
     {
       src: "/images/ContactsPixeled.png",
@@ -40,19 +41,19 @@ export default function Mockup() {
         else setDisplay("home");
         break;
       case "menu":
-        menuItems[menuItem].action();
+        menuItems[menuSelection].action();
         break;
     }
   };
 
   const handleUpButton = () => {
-    setMenuItem(
+    setMenuSelection(
       (item) =>
         (((item + 1) % menuItems.length) + menuItems.length) % menuItems.length
     );
   };
   const handleDownButton = () => {
-    setMenuItem(
+    setMenuSelection(
       (item) =>
         (((item - 1) % menuItems.length) + menuItems.length) % menuItems.length
     );
@@ -64,10 +65,13 @@ export default function Mockup() {
       case "menu":
         setDisplay("home");
         break;
+      default:
+        setDisplay("menu");
+        break;
     }
   };
   return (
-    <div className="relative w-[300px] h-[800px]">
+    <div className="relative w-[18.75rem] h-[50rem]">
       <Image
         src="/images/nokia3310background.png"
         className="absolute top-[12rem] left-10 w-56 h-[10.2rem] rounded-2xl"
@@ -87,7 +91,7 @@ export default function Mockup() {
           display={display}
           setDisplay={setDisplay}
           menuItems={menuItems}
-          menuItem={menuItem}
+          menuSelection={menuSelection}
         />
       </div>
       <div

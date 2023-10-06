@@ -9,40 +9,41 @@ import {
   useState,
 } from "react";
 import MenuItem from "./MenuItem";
+import { IDisplay } from "@/models/Display";
 
-export default function ({
+export default function Display({
   display,
   setDisplay,
   menuItems,
-  menuItem,
+  menuSelection,
 }: {
-  display: string;
-  setDisplay: Dispatch<SetStateAction<string>>;
+  display: IDisplay;
+  setDisplay: Dispatch<SetStateAction<IDisplay>>;
   menuItems: any[];
-  menuItem: number;
+  menuSelection: number;
 }) {
   const timestamp = new Date();
   const refs = useRef<any>([]);
-  const gallery = ['S1.jpg','S2.jpg','SeJ.jpg','SeL.jpg']
+  const gallery = ["S1.jpg", "S2.jpg", "SeJ.jpg", "SeL.jpg"];
 
-  refs.current = gallery.map(
-    (_, i) => refs.current[i] ?? createRef()
-  );
+  refs.current = gallery.map((_, i) => refs.current[i] ?? createRef());
 
   useEffect(() => {
     if (display === "gallery") {
-      refs.current[menuItem].current?.scrollIntoView({block:"nearest", inline:"start"})
-      console.log(refs.current[menuItem].current);
-      
+      refs.current[menuSelection].current?.scrollIntoView({
+        block: "nearest",
+        inline: "start",
+      });
+      console.log(refs.current[menuSelection].current);
     }
-  }, [menuItem]);
+  }, [menuSelection]);
 
   const view = () => {
     switch (display) {
       case "home":
         return (
           <>
-            <div className="w-full absolute text-right px-4 top-2">{`${timestamp.getHours()}:${timestamp.getMinutes()}`}</div>
+            <div className="w-full absolute text-right px-4 top-2">{`${String(timestamp.getHours()).padStart(2, '0')}:${String(timestamp.getMinutes()).padStart(2, '0')}`}</div>
             <div className="flex justify-between items-center w-full h-full">
               <Image
                 src="/images/reception-bar.png"
@@ -73,9 +74,9 @@ export default function ({
         return (
           <div className="flex flex-col justify-between items-center w-full h-full">
             <MenuItem
-              src={menuItems[menuItem].src}
-              title={menuItems[menuItem].title}
-              action={menuItems[menuItem].action}
+              src={menuItems[menuSelection].src}
+              title={menuItems[menuSelection].title}
+              action={menuItems[menuSelection].action}
             />
             <div className="w-full text-center relative">Select</div>
           </div>
@@ -94,15 +95,18 @@ export default function ({
       case "gallery":
         return (
           <>
-            <div className="grid grid-cols-2 h-full gap-2">
+            <div className="grid grid-cols-2 h-full relative gap-2">
               {gallery.map((item, i) => (
                 <Image
                   key={i}
-                  src={"/images/gallery/"+item}
+                  src={"/images/gallery/" + item}
                   alt=""
                   width={300}
                   height={300}
-                  className={"w-full h-full object-cover "+(menuItem === i ? "border-2 border-Nokia" : "")}
+                  className={
+                    "w-full h-full object-cover " +
+                    (menuSelection === i ? "border-2 border-Nokia" : "")
+                  }
                   ref={refs.current[i]}
                 />
               ))}

@@ -7,11 +7,15 @@
   src: url('/assets/font/nokiafc22.ttf');
 }
 
-/* *::-webkit-scrollbar {
+/* html{
+  font-size: 14pt;
+} */
+
+*::-webkit-scrollbar {
   display: none;
 }
 
 * {
   -ms-overflow-style: none;  
   scrollbar-width: none;  
-} */
+}
